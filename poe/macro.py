@@ -157,12 +157,9 @@ def chkwindows():
 def poison(event, hotkey, args):
     try:
         if(chkwindows()):
-            press(DIK_2, 0.02)
-            time.sleep(0.08)
-            press(DIK_3, 0.02)
-            time.sleep(0.08)
-            press(DIK_4, 0.02)
-            time.sleep(0.08)
+            press(DIK_2, 0.02, 0.08)
+            press(DIK_3, 0.02, 0.08)
+            press(DIK_4, 0.02, 0.08)
             press(DIK_5, 0.02)
 
             print("Use Poison")
@@ -171,10 +168,13 @@ def poison(event, hotkey, args):
     except:
         i = 1
 
-def press(key, times):
+def press(key, times, sleep = 0):
     PressKey(key)
     time.sleep(times)
     ReleaseKey(key)
+
+    if(sleep > 0):
+        time.sleep(sleep)
 
 def autoheal(event, hotkey, args): 
     # pass
@@ -194,12 +194,8 @@ def autoheal(event, hotkey, args):
 def curse(event, hotkey, args):
     try:
         if(chkwindows()):
-            press(DIK_E, 0.02)
-            time.sleep(0.25)
-            
-            press(DIK_Q, 0.02)
-            time.sleep(0.25)
-            
+            press(DIK_E, 0.02, 0.25)
+            press(DIK_Q, 0.02, 0.25)
             press(DIK_S, 0.02)
 
             print("Use curse")
@@ -211,12 +207,8 @@ def curse(event, hotkey, args):
 def totem(event, hotkey, args):
     try:
         if(chkwindows()):
-            press(DIK_W, 0.02)
-            time.sleep(0.16)
-            
-            press(DIK_W, 0.02)
-            time.sleep(0.16)
-
+            press(DIK_W, 0.02, 0.16)
+            press(DIK_W, 0.02, 0.16)
             press(DIK_D, 0.02)
 
             print("Use totem")
@@ -236,17 +228,10 @@ def aura(event, hotkey, args):
             PressKey(DIK_LCONTROL)
             time.sleep(0.02)
 
-            press(DIK_W, 0.02)
-            time.sleep(0.2)
-
-            press(DIK_E, 0.02)
-            time.sleep(0.2)
-
-            press(DIK_R, 0.02)
-            time.sleep(0.2)
-
-            press(DIK_T, 0.02)
-            time.sleep(0.2)
+            press(DIK_W, 0.02, 0.2)
+            press(DIK_E, 0.02, 0.2)
+            press(DIK_R, 0.02, 0.2)
+            press(DIK_T, 0.02, 0.2)
             
             ReleaseKey(DIK_LCONTROL)
 
@@ -287,9 +272,7 @@ while True:
         # print(avg_color, difference)
 
         if(avg_color[2] < 100 and difference > 6):
-            PressKey(DIK_1)
-            time.sleep(0.05)
-            ReleaseKey(DIK_1)
+            press(DIK_1, 0.05)
             print("Heal")
             later = now
 
